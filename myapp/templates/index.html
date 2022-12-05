@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form">
+            <p class="title">Регистрация</p>
+            <p class="text">Создайте учетную запись</p>
+            <form action="register" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="fieldWrapper">
+                        <p>{{ field.label_tag }}</p>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <div class="reg">
+                    <input type="submit" value="Регистрация" class="but">
+                </div>
+            </form>
+            <p class="text">Вернуться к странице входа</p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <div class="form">
+            <p class="title">Вход</p>
+            <p class="text">Войдите в учетную запись</p>
+            <form action="login" method="post">
+                {% csrf_token %}
+                {% for field in form1 %}
+                    <div class="fieldWrapper1">
+                        <p>{{ field.label_tag }}</p>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <div class="reg">
+                    <input type="submit" value="Войти" class="but">
+                </div>
+            </form>
+            <p class="text">Ещё не зарегистрированы?</p>
+            <div class="reg">
+                <input type="submit" value="Регистрация" class="but">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
