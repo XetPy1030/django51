@@ -11,6 +11,8 @@ def af_reg(req):
     return render(req, 'reg.html', context={'info': info})
 
 def login(req):
+    if not Login(req.POST).is_valid():
+        return HttpResponseRedirect('/')
     if req.POST['name'] == 'User1' and req.POST['password'] == "12345678":
         return render(req, 'login.html')
     else:
